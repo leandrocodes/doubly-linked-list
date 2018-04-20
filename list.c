@@ -28,6 +28,10 @@ void search(List *l, int data){
         return NULL;
     } else{
         while (tempI != tempF &&  tempI->next != tempF){
+            if (tempI->data == data){
+                printf("\nEncontrou");
+                return tempI;
+            }
         }
     }
 
