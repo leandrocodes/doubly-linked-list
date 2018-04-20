@@ -4,7 +4,7 @@
 typedef struct node{
 	int data;
 	struct node *next;
-    struct node *previous;
+    struct node *prev;
 }Node;
 
 typedef struct list {
@@ -27,12 +27,14 @@ void search(List *l, int data){
         printf("\nLista vazia");
         return NULL;
     } else{
-        while (tempI != tempF &&  tempI->next != tempF){
+        do {
             if (tempI->data == data){
                 printf("\nEncontrou");
                 return tempI;
             }
-        }
+            tempI = tempI->next;
+            tempF = tempF->prev;
+        } while (tempI != tempF &&  tempI->next != tempF);
     }
 
 }
