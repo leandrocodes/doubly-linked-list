@@ -28,7 +28,6 @@ void search(List *l, int data){
         return NULL;
     } else{
         while (tempI != tempF &&  tempI->next != tempF){
-            
         }
     }
 
