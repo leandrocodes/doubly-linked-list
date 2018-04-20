@@ -26,7 +26,7 @@ void search(List *l, int data){
     if(l->head == NULL){
         printf("\nLista vazia");
         return NULL;
-    } else{
+    } 
         do {
             if (tempI->data == data){
                 printf("\nEncontrou");
@@ -35,6 +35,4 @@ void search(List *l, int data){
             tempI = tempI->next;
             tempF = tempF->prev;
         } while (tempI != tempF &&  tempI->next != tempF);
-    }
-
 }
