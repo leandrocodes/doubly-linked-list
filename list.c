@@ -19,7 +19,7 @@ List *createList(){
     return list;
 }
 
-void search(List *l, int data){
+Node *search(List *l, int data){
     Node *tempI = l->head;
     Node *tempF = l->tail;
 
@@ -32,7 +32,30 @@ void search(List *l, int data){
                 printf("\nEncontrou");
                 return tempI;
             }
+            if (tempF->data == data){
+                printf("\nEncontrou");
+                return tempF;
+            }
             tempI = tempI->next;
             tempF = tempF->prev;
         } while (tempI != tempF &&  tempI->next != tempF);
+}
+
+void delete(List *l, int data){
+    Node *temp = search(l, data);
+
+        if(temp == NULL){
+            printf("Nada a remover\n");
+            return
+        }else{
+            if(l->head == l->tail){//apenas um elemento na lista
+                l->head = NULL;
+                l->tail = NULL;
+                free(temp);
+            }
+            if(temp == l->head){
+                l->head = l->head->next;
+                l->head->prev = NULL;
+            }
+        }
 }
