@@ -53,9 +53,18 @@ void delete(List *l, int data){
                 l->tail = NULL;
                 free(temp);
             }
-            if(temp == l->head){
+            if(temp == l->head){//pimeiroelemento
                 l->head = l->head->next;
                 l->head->prev = NULL;
+                free(temp);
+            }
+            if(temp == l->tail){//ultimo elemento
+                l->tail = l->tail->prev;
+                l->tail->prov = NULL;
+                free(temp);
+            }
+            else{//no meio
+                
             }
         }
 }
