@@ -19,6 +19,18 @@ List *createList(){
     return list;
 }
 
+void push(List *l, int data){
+    Node *novo = (Node*)malloc(sizeof(Node));
+    
+    if(l->head == NULL){
+        novo->next = NULL;
+        novo->prev = NULL;
+        l->tail = novo;
+        l->head = novo;
+    }
+}
+
+
 Node *search(List *l, int data){
     Node *tempI = l->head;
     Node *tempF = l->tail;
@@ -45,26 +57,34 @@ void delete(List *l, int data){
     Node *temp = search(l, data);
 
         if(temp == NULL){
-            printf("Nada a remover\n");
-            return
+            printf("\nNada a remover");
+            return;
         }else{
             if(l->head == l->tail){//apenas um elemento na lista
                 l->head = NULL;
                 l->tail = NULL;
-                free(temp);
             }
-            if(temp == l->head){//pimeiroelemento
+            else if(temp == l->head){//pimeiroelemento
                 l->head = l->head->next;
                 l->head->prev = NULL;
-                free(temp);
-            }
-            if(temp == l->tail){//ultimo elemento
-                l->tail = l->tail->prev;
-                l->tail->prov = NULL;
-                free(temp);
-            }
-            else{//no meio
                 
             }
+            else if(temp == l->tail){//ultimo elemento
+                l->tail = l->tail->prev;
+                l->tail->next = NULL;
+            }
+            else{//no meio
+                temp->prev->next = temp->next;
+                temp->next->prev = temp->prev;
+            }
+        free(temp);
         }
+}
+
+
+int main(){
+    List *l1 = createList();
+
+    push(l1, 95);
+    search(l1, 95);
 }
